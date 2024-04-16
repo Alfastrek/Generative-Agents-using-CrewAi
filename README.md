@@ -1,6 +1,8 @@
 # Crew-Ai-Test
 
-We are Testin out Crew-Ai with Openai, Huggingfacehub, langchain model and exa
+We are Testin out Crew-Ai with Openai, Huggingfacehub, langchain model and Exa
+
+Test Includes Mainly Two Agents (Researcher and Writer)- Discussing and creating a blog on Top Tech Job trends in 2024.
 
 ## Installation 
 
