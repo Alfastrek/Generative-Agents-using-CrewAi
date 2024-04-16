@@ -1,0 +1,15 @@
+# API keys
+.env
+
+# Virtual environment
+venv/
+
+# Python bytecode files
+*.pyc
+
+# Python cache directories
+__pycache__/
+
+# IDE-specific files
+.idea/
+.vscode/
