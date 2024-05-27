@@ -17,14 +17,14 @@ from tasks import MeetingPrepTasks
 
 llm = HuggingFaceHub(repo_id="google/gemma-2b-it", model_kwargs={"max_new_tokens": 250})
 
-researcher = MeetingPrepAgents().researcher()
+# researcher = MeetingPrepAgents().researcher()
 writer = MeetingPrepAgents().writer()
 
-listdownjobs_task = MeetingPrepTasks(agent=researcher).Listdownjobs()
-developblog_task = MeetingPrepTasks(agent=writer).developblog()
+# listdownjobs_task = MeetingPrepTasks(agent=researcher).Listdownjobs()
+developblog_task = MeetingPrepTasks(agent=writer).develop_blog()
 crew = Crew(
-    agents=[researcher, writer],
-    tasks=[listdownjobs_task, developblog_task],
+    agents=[writer],
+    tasks=[developblog_task],
     verbose=2
 )
 results = crew.kickoff()

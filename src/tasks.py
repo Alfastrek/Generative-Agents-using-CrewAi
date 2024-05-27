@@ -1,20 +1,26 @@
 from crewai import Task
 
+import requests
 class MeetingPrepTasks:
     def __init__(self, agent):
         self.agent = agent
+        self.pokemon_description = ""
 
-    def Listdownjobs(self):
+    def fetch_pokemon_data(self):
+        api_url = "https://pokeapi.co/api/v2/pokemon/pikachu"
+        response = requests.get(api_url)
+        pokemon_data = response.json()
+        pokemon_species_url = pokemon_data['species']['url']
+        species_response = requests.get(pokemon_species_url)
+        species_data = species_response.json()
+        self.pokemon_description = species_data['flavor_text_entries'][0]['flavor_text']
+        
+    def develop_blog(self):
+        self.fetch_pokemon_data()
         return Task(
-            description="""List down Top Tech job roles.""",
-            expected_output="Full analysis report in short bullet points",
-            agent=self.agent
+            description="Describing listed Pokemon details",
+            expected_output="Blog of 5 lines based on data provided on Pokemon",
+            agent=self.agent,
+            additional_data={"pokemon_description": self.pokemon_description}
         )
-    
-    def developblog(self):
-        return Task(
-            description="""Using the insights provided, develop an engaging blog that posts the highlights of the most significant and
-            high-paying tech jobs in 2024.""",
-            expected_output="Full blog post of at least 4 paragraphs",
-            agent=self.agent
-        )
+
