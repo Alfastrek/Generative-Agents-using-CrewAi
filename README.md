@@ -1,4 +1,4 @@
-# Crew-Ai-Test
+# Crew-Ai
 
 We are Testin out Crew-Ai with Openai, Huggingfacehub, langchain model and Exa
 
